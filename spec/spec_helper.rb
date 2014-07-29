@@ -54,3 +54,9 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.include LoginMacros
 end
+
+require 'capybara/poltergeist'
+Capybara.javascript_driver = :poltergeist
+Capybara.register_driver :poltergeist_debug do |app|
+  Capybara::Poltergeist::Driver.new(app, :inspector => true)
+end
